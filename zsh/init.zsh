@@ -21,5 +21,3 @@ export EDITOR=vim
 
 setopt promptsubst
 autoload -U promptinit
-promptinit
-prompt bkirz

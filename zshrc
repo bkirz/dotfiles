@@ -1,1 +1,1 @@
-source zsh/init.zsh
+source ~/dotfiles/zsh/init.zsh
