@@ -15,8 +15,8 @@ user_color="%(!.%{${fg[red]}%}.%{${fg[green]}%})"
 export PATH=$HOME/go/bin:$HOME/.bin:/opt/local/bin:$PATH:/usr/local/mysql/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/local/lib
 
-#export PROMPT="${user_color}[%{${reset_color}%}%m:%~${user_color}]%#%{${reset_color}%} "
-#export RPROMPT="${user_color}(%{${reset_color}%}%h - %*${user_color}%)%{${reset_color}%}"
+export PROMPT="${user_color}[%{${reset_color}%}%m:%~${user_color}]%#%{${reset_color}%} "
+export RPROMPT="${user_color}(%{${reset_color}%}%h - %*${user_color}%)%{${reset_color}%}"
 export EDITOR=vim
 
 setopt promptsubst
