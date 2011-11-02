@@ -12,7 +12,7 @@ syntax on
 filetype plugin on
 
 " Use the dark version of the solarized theme
-set background=light
+set bg=dark
 let g:solarized_termtrans=1
 let g:solarized_contrast="normal"
 let g:solarized_visibility="low"
