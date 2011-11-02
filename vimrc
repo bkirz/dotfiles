@@ -22,6 +22,13 @@ colorscheme solarized
 set listchars=tab:>-,trail:~
 set list
 
+" Display line numbers
+set nu
+
+" Set and highlight 80-column boundary
+set textwidth=79
+set colorcolumn=+0,+1,+2
+
 " Indentation preferences
 set autoindent
 set smartindent
