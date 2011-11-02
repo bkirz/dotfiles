@@ -32,7 +32,6 @@ set colorcolumn=+0,+1,+2
 " Indentation preferences
 set autoindent
 set smartindent
-set nowrap
 set expandtab
 set softtabstop=2
 set shiftwidth=2
