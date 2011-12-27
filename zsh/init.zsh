@@ -5,7 +5,7 @@ autoload -U compinit promptinit colors
 promptinit
 colors
 
-user_color="%(!.%{${fg[red]}%}.%{${fg[green]}%})"
+user_color="%(!.%{${fg[red]}%}.)"
 
 export PATH=$HOME/.bin:/usr/local/bin:/usr/local/sbin:$PATH
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/local/lib
