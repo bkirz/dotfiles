@@ -25,16 +25,12 @@ let g:solarized_contrast="normal"
 let g:solarized_visibility="low"
 colorscheme solarized
 
-" Display whitespace
+" Display bad whitespace
 set listchars=tab:>-,trail:~
 set list
 
 " Display line numbers
-set nu
-
-" Set and highlight 80-column boundary
-set textwidth=79
-set colorcolumn=+0,+1,+2
+set number
 
 " Indentation preferences
 set autoindent
@@ -43,4 +39,6 @@ set expandtab
 set softtabstop=2
 set shiftwidth=2
 set nosmarttab
+
+" Allow for virtual editing with blocks
 set virtualedit=block
