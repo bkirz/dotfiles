@@ -3,13 +3,20 @@
 " Disable crippling vi compatibility mode
 set nocompatible
 
+" Make backspace work again
+set backspace=indent,eol,start
+
 " Enable pathogen (https://github.com/tpope/vim-pathogen)
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
+" Use comma for Leader (easier to type than backslash)
+let mapleader = ","
+
 " Enable syntax highlighting
 syntax on
 filetype plugin on
+filetype indent on
 
 " Use the dark version of the solarized theme
 set bg=dark
