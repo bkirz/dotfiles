@@ -40,5 +40,5 @@ set softtabstop=2
 set shiftwidth=2
 set nosmarttab
 
-" Allow for virtual editing with blocks
+" Turn on virtual editing in block mode only
 set virtualedit=block
