@@ -1,0 +1,16 @@
+[user]
+    name = Ben Kirzhner
+    email = ben@bkirz.com
+[core]
+    editor = vim
+[alias]
+    graph = log --all --decorate --graph
+[apply]
+    whitespace = strip
+[diff]
+    color = auto
+    rename = copy
+[pager]
+    color = true
+[status]
+    color = auto
