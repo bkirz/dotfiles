@@ -20,6 +20,7 @@ filetype indent on
 
 " Use the dark version of the solarized theme
 set bg=dark
+let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 let g:solarized_contrast="normal"
 let g:solarized_visibility="low"
