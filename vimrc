@@ -43,3 +43,8 @@ set nosmarttab
 
 " Turn on virtual editing in block mode only
 set virtualedit=block
+
+" Delegate to a local vimrc
+if filereadable(glob("~/.vimrc.local"))
+  source ~/.vimrc.local
+endif
