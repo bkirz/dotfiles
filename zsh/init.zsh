@@ -5,13 +5,19 @@ autoload -U compinit promptinit colors
 promptinit
 colors
 
-user_color="%(!.%{${fg[red]}%}.)"
+escaped_red="%{${fg[red]}%}"
+escaped_green="%{${fg[green]}%}"
+escaped_reset="%{${reset_color}%}"
 
+user_color="%(!.${escaped_red}.)"
+exit_code_text="%(?.${escaped_green}.${escaped_red})%? ${escaped_reset}"
+prompt_text="→ "
+
+export PROMPT="${user_color}${exit_code_text}${prompt_text}${escaped_reset}"
+
+export EDITOR=vim
 export PATH=$HOME/.bin:/usr/local/bin:/usr/local/sbin:$PATH
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/local/lib
-
-export PROMPT="${user_color}[%{${reset_color}%}%m:%~${user_color}]%#%{${reset_color}%} "
-export EDITOR=vim
 
 setopt promptsubst
 autoload -U promptinit
