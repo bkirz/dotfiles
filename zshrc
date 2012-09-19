@@ -17,7 +17,6 @@ exit_code_text="%(?.${escaped_green}.${escaped_red})%? ${escaped_reset}"
 prompt_text="→ "
 
 export PROMPT="${user_color}${exit_code_text}${prompt_text}${escaped_reset}"
-source ~/dotfiles/zsh/prompt.zsh
 
 # load a local override file if it exists
 test -f $HOME/.zshrc.local && source $HOME/.zshrc.local
