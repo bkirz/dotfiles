@@ -1,5 +1,7 @@
 # bkirz prompt theme
 #
+# "~/a/b/dotfiles(master ••)➤ "
+#
 # inspired by wunjo prompt theme
 
 setopt prompt_subst
@@ -9,23 +11,44 @@ autoload -U add-zsh-hook
 autoload -U colors && colors
 autoload -U zgitinit && zgitinit
 
-prompt_bkirz_git_status () {
-  if zgit_inworktree; then
-    echo "in worktree"
-  else
-    echo "not in worktree"
-  fi
-}
-
 escaped_red="%{${fg[red]}%}"
+escaped_yellow="%{${fg[yellow]%}"
 escaped_green="%{${fg[green]}%}"
 escaped_reset="%{${reset_color}%}"
 
-user_color="%(!.${escaped_red}.)"
-exit_code_text="%(?.${escaped_green}.${escaped_red})%? ${escaped_reset}"
+prompt_bkirz_git_dots () {
+  zgit_isgit || return
 
-prompt_text="→ "
+  dot_string=""
 
-setopt prompt_subst
+  if ! zgit_isworktreeclean || zgit_hasuntracked; then
+    dot_string+="${escaped_red}•${escaped_reset}"
+  fi
 
-export PROMPT='$(prompt_bkirz_git_status)${user_color}${prompt_text}${escaped_reset}'
+  if ! zgit_isindexclean; then
+    dot_string+="${escaped_yellow}•${escaped_reset}"
+  fi
+
+  if [[ -n $dot_string ]]; then
+    dot_string=" ${dot_string}"
+  fi
+
+  echo $dot_string
+}
+
+prompt_bkirz_git_status () {
+  zgit_isgit || return
+
+  echo "($(zgit_branch)$(prompt_bkirz_git_dots))"
+}
+
+prompt_bkirz_setup () {
+
+  user_color="%(!.${escaped_red}.)"
+  prompt_text="${user_color}→ ${escaped_reset}"
+
+  PROMPT='%~ $(prompt_bkirz_git_status)${prompt_text}'
+  export PROMPT
+}
+
+prompt_bkirz_setup "%@"
