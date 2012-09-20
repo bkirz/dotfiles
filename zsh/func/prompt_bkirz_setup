@@ -1,0 +1,31 @@
+# bkirz prompt theme
+#
+# inspired by wunjo prompt theme
+
+setopt prompt_subst
+setopt PROMPT_SUBST
+
+autoload -U add-zsh-hook
+autoload -U colors && colors
+autoload -U zgitinit && zgitinit
+
+prompt_bkirz_git_status () {
+  if zgit_inworktree; then
+    echo "in worktree"
+  else
+    echo "not in worktree"
+  fi
+}
+
+escaped_red="%{${fg[red]}%}"
+escaped_green="%{${fg[green]}%}"
+escaped_reset="%{${reset_color}%}"
+
+user_color="%(!.${escaped_red}.)"
+exit_code_text="%(?.${escaped_green}.${escaped_red})%? ${escaped_reset}"
+
+prompt_text="→ "
+
+setopt prompt_subst
+
+export PROMPT='$(prompt_bkirz_git_status)${user_color}${prompt_text}${escaped_reset}'
