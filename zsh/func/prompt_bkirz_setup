@@ -12,7 +12,7 @@ autoload -U colors && colors
 autoload -U zgitinit && zgitinit
 
 escaped_red="%{${fg[red]}%}"
-escaped_yellow="%{${fg[yellow]%}"
+escaped_yellow="%{${fg[yellow]}%}"
 escaped_green="%{${fg[green]}%}"
 escaped_reset="%{${reset_color}%}"
 
