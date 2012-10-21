@@ -30,6 +30,9 @@ colorscheme solarized
 set listchars=tab:>-,trail:~
 set list
 
+" Allow list to be toggled easily
+nmap <leader>l :set list!<CR>
+
 " Display line numbers
 set number
 
@@ -43,6 +46,30 @@ set nosmarttab
 
 " Turn on virtual editing in block mode only
 set virtualedit=block
+
+" Force the active window to be wide enough for
+" most reasonable codebases.
+set winwidth=100
+
+" Rather than setting paste/nopaste manually,
+" define a function to auto-paste whatever's in the pasteboard
+fun! PasteFromPasteBoard()
+  set paste
+  r!pbpaste
+  set nopaste
+endfun
+
+nmap <leader>p :call PasteFromPasteBoard()<CR>
+
+
+" Open NerdTREE by default
+autocmd vimenter * NERDTree
+
+" Close vim if NerdTREE is the only active buffer
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" Remove NerdTREE boilerplace
+let NERDTreeMinimalUI=1
 
 " Delegate to a local vimrc
 if filereadable(glob("~/.vimrc.local"))
