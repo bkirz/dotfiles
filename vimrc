@@ -61,7 +61,6 @@ endfun
 
 nmap <leader>p :call PasteFromPasteBoard()<CR>
 
-
 " Open NerdTREE by default
 autocmd vimenter * NERDTree
 
@@ -70,6 +69,67 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 
 " Remove NerdTREE boilerplace
 let NERDTreeMinimalUI=1
+
+" RSpec test helpers.
+" Originals from Gary Bernhardt's screen cast:
+" https://www.destroyallsoftware.com/screencasts/catalog/file-navigation-in-vim
+" https://www.destroyallsoftware.com/file-navigation-in-vim.html
+" Modified by Myron Marston:
+" https://github.com/myronmarston/vim_files
+function! RunTests(filename)
+    " Write the file and run tests for the given filename
+    :w
+    :silent !echo;echo;echo;echo;echo
+    let rspec_bin = FindRSpecBinary(".")
+    exec ":!time NOEXEC=0 " . rspec_bin . a:filename " --backtrace"
+endfunction
+
+function! FindRSpecBinary(dir)
+  if filereadable(a:dir . "/bin/rspec")
+    return a:dir . "/bin/rspec "
+  elseif filereadable(a:dir . "/.git/config")
+    " If there's a .git/config file, assume it is the project root;
+    " Just run the system-gem installed rspec binary.
+    return "rspec "
+  else
+    " We may be in a project sub-dir; check our parent dir
+    return FindRSpecBinary(a:dir . "/..")
+  endif
+endfunction
+
+function! SetTestFile()
+    " Set the spec file that tests will be run for.
+    let t:grb_test_file=@%
+endfunction
+
+function! RunTestFile(...)
+    if a:0
+        let command_suffix = a:1
+    else
+        let command_suffix = ""
+    endif
+
+    " Run the tests for the previously-marked file.
+    let in_spec_file = match(expand("%"), '_spec.rb$') != -1
+    if in_spec_file
+        call SetTestFile()
+    elseif !exists("t:grb_test_file")
+        return
+    end
+    call RunTests(t:grb_test_file . command_suffix)
+endfunction
+
+function! RunNearestTest()
+    let spec_line_number = line('.')
+    call RunTestFile(":" . spec_line_number)
+endfunction
+
+" Run this file
+map <leader>m :call RunTestFile()<cr>
+" Run only the example under the cursor
+map <leader>. :call RunNearestTest()<cr>
+" Run all test files
+map <leader>a :call RunTests('spec')<cr>
 
 " Delegate to a local vimrc
 if filereadable(glob("~/.vimrc.local"))
