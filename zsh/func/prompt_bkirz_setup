@@ -48,10 +48,20 @@ prompt_bkirz_git_dots () {
   echo $dot_string
 }
 
+prompt_bkirz_git_branch () {
+  branch_string="$(zgit_branch)"
+
+  if [[ $branch_string == "" ]]; then
+    branch_string="no branch"
+  fi
+
+  echo $branch_string
+}
+
 prompt_bkirz_git_status () {
   zgit_isgit || return
 
-  echo "($(zgit_branch)$(prompt_bkirz_git_dots)) "
+  echo "($(prompt_bkirz_git_branch)$(prompt_bkirz_git_dots)) "
 }
 
 prompt_bkirz_setup () {
