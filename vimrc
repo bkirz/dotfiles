@@ -61,14 +61,10 @@ endfun
 
 nmap <leader>p :call PasteFromPasteBoard()<CR>
 
-" Open NerdTREE by default
-autocmd vimenter * NERDTree
-
-" Close vim if NerdTREE is the only active buffer
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
 " Remove NerdTREE boilerplace
 let NERDTreeMinimalUI=1
+
+nnoremap <leader>d :NERDTreeToggle<CR>
 
 " RSpec test helpers.
 " Originals from Gary Bernhardt's screen cast:
