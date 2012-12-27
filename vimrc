@@ -131,3 +131,6 @@ map <leader>a :call RunTests('spec')<cr>
 if filereadable(glob("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
+
+" Ctrl-P configuration
+let g:ctrlp_custom_ignore = { 'dir': '\v[\/](\.bundle|bundle|coverage|log)$' }
