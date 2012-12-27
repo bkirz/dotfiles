@@ -52,7 +52,7 @@ prompt_bkirz_git_branch () {
   branch_string="$(zgit_branch)"
 
   if [[ $branch_string == "" ]]; then
-    branch_string="no branch"
+    branch_string=`git rev-parse HEAD | head -c 7`
   fi
 
   echo $branch_string
