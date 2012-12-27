@@ -127,10 +127,12 @@ map <leader>. :call RunNearestTest()<cr>
 " Run all test files
 map <leader>a :call RunTests('spec')<cr>
 
+" Ctrl-P configuration
+let g:ctrlp_custom_ignore = { 'dir': '\v[\/](\.bundle|bundle|coverage|\.git|log)$' }
+
+set wildignore+=*.swp
+
 " Delegate to a local vimrc
 if filereadable(glob("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
-
-" Ctrl-P configuration
-let g:ctrlp_custom_ignore = { 'dir': '\v[\/](\.bundle|bundle|coverage|log)$' }
