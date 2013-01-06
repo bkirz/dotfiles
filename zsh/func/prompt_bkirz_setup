@@ -22,7 +22,8 @@ prompt_bkirz_dir () {
     if components.empty?
       print "/"
     else
-      print (components[0..-2].map{|c| c[0]} + [components.last]).join("/")
+      str = (components[0..-2].map{|c| c[0, 1]} + [components.last]).join("/")
+      print str
     end'
 
   echo `ruby -e "${ruby_script}"`
