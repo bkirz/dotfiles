@@ -51,6 +51,9 @@ set virtualedit=block
 " most reasonable codebases.
 set winwidth=100
 
+" Kill trailing whitespace.
+nnoremap <leader>w :%s/\v\s+$//g<CR>
+
 " Rather than setting paste/nopaste manually,
 " define a function to auto-paste whatever's in the pasteboard
 fun! PasteFromPasteBoard()
