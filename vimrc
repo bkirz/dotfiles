@@ -7,8 +7,7 @@ set nocompatible
 set backspace=indent,eol,start
 
 " Enable pathogen (https://github.com/tpope/vim-pathogen)
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+call pathogen#infect()
 
 " Use comma for Leader (easier to type than backslash)
 let mapleader = ","
