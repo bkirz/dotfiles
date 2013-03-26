@@ -28,3 +28,6 @@
 [submodule "vim/bundle/syntastic"]
 	path = vim/bundle/syntastic
 	url = git@github.com:scrooloose/syntastic.git
+[submodule "vim/bundle/visual-star-search"]
+	path = vim/bundle/visual-star-search
+	url = git@github.com:nelstrom/vim-visual-star-search.git
