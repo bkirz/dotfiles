@@ -16,3 +16,5 @@
     color = auto
 [push]
 	default = tracking
+[merge]
+	conflictstyle = diff3
