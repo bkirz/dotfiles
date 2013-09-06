@@ -4,17 +4,22 @@
 [core]
     editor = vim
 [alias]
-    graph = log --all --decorate --graph
+    graph = log --decorate --graph
+    statsu = status
+    stauts = status
 [apply]
     whitespace = strip
 [diff]
     color = auto
     rename = copy
+    patience = true
 [pager]
     color = true
 [status]
     color = auto
 [push]
-	default = tracking
+    default = tracking
+[github]
+    user = benkirzhner
 [merge]
-	conflictstyle = diff3
+    tool = vimdiff
