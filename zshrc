@@ -15,8 +15,9 @@ export EDITOR=vim
 autoload -U compinit
 compinit
 
-# Load rvm if installed
-[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
+# Load chruby and enable auto-switching
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/opt/chruby/share/chruby/auto.sh
 
 # Load a local override file for machine-specific config
 [[ -s $HOME/.zshrc.local ]] && source $HOME/.zshrc.local
