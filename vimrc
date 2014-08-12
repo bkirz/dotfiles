@@ -53,8 +53,16 @@ set virtualedit=block
 " most reasonable codebases.
 set winwidth=100
 
-" Kill trailing whitespace.
-nnoremap <leader>w :%s/\v\s+$//g<CR>
+" taken from: http://stackoverflow.com/questions/356126/how-can-you-automatically-remove-trailing-whitespace-in-vim/1618401#1618401
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+
+" command to strip white space from any file
+nnoremap <leader>w :call <SID>StripTrailingWhitespaces()<cr>
 
 " Rather than setting paste/nopaste manually,
 " define a function to auto-paste whatever's in the pasteboard
