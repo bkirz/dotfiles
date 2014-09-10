@@ -51,7 +51,7 @@ set virtualedit=block
 
 " Force the active window to be wide enough for
 " most reasonable codebases.
-set winwidth=100
+set winwidth=90
 
 " taken from: http://stackoverflow.com/questions/356126/how-can-you-automatically-remove-trailing-whitespace-in-vim/1618401#1618401
 fun! <SID>StripTrailingWhitespaces()
@@ -135,10 +135,16 @@ endfunction
 
 " Run this file
 map <leader>m :call RunTestFile()<cr>
-" Run only the example under the cursor
-map <leader>. :call RunNearestTest()<cr>
-" Run all test files
-map <leader>a :call RunTests('spec')<cr>
+" Run this file with the debugger loaded
+map <leader>b :call RunTestFile(' -rdebugger')<cr>
+" Run this file as a dry run (just emit example docstrings)
+map <leader>d :call RunTestFile(' --dry-run')<cr>
+
+" Search for the currently selected text using ack.vim
+map <leader>a :Ack <c-R><cr>
+
+" Set the current filetype to ruby
+map <leader>r :set ft=ruby<cr>
 
 " Ctrl-P configuration
 let g:ctrlp_custom_ignore = { 'dir': '\v[\/](\.bundle|bundle|coverage|\.git|log)$' }
