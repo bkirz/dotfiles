@@ -3,6 +3,7 @@
     email = ben@bkirz.com
 [core]
     editor = vim
+	excludesfile = /Users/benjamin/.gitignore_global
 [alias]
     graph = log --decorate --graph
     statsu = status
