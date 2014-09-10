@@ -15,6 +15,9 @@ export EDITOR=vim
 autoload -U compinit
 compinit
 
+# Ensure homebrew-installed stuff takes precedence over system
+export PATH="/usr/local/bin:$PATH"
+
 # Load chruby and enable auto-switching
 source /usr/local/opt/chruby/share/chruby/chruby.sh
 source /usr/local/opt/chruby/share/chruby/auto.sh
