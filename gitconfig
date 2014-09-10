@@ -8,6 +8,9 @@
     graph = log --decorate --graph
     statsu = status
     stauts = status
+    pish = push
+    psuh = push
+    chekcout = checkout
 [apply]
     whitespace = strip
 [diff]
