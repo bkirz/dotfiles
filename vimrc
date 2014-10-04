@@ -77,8 +77,6 @@ nmap <leader>p :call PasteFromPasteBoard()<CR>
 " Remove NerdTREE boilerplace
 let NERDTreeMinimalUI=1
 
-nnoremap <leader>d :NERDTreeToggle<CR>
-
 " RSpec test helpers.
 " Originals from Gary Bernhardt's screen cast:
 " https://www.destroyallsoftware.com/screencasts/catalog/file-navigation-in-vim
