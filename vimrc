@@ -3,6 +3,29 @@
 " Disable crippling vi compatibility mode
 set nocompatible
 
+" Required for vundle config
+filetype off
+
+"""" BEGIN Vundle configuration
+set rtp+=~/.vim/bundle/vundle
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'scrooloose/nerdtree'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/syntastic'
+Plugin 'elixir-lang/vim-elixir'
+
+call vundle#end()
+filetype plugin indent on
+"""" END Vundle configuration
+
 " Configure system clipboard
 set clipboard=unnamed
 
