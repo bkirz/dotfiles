@@ -4,7 +4,7 @@
 set nocompatible
 
 " Configure system clipboard
-set clipboard=unnamed
+" set clipboard=unnamed
 
 " Make backspace work again
 set backspace=indent,eol,start
