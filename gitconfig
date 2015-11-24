@@ -1,6 +1,6 @@
 [user]
-    name = Ben Kirzhner
-    email = ben@bkirz.com
+	name = Ben Kirzhner
+	email = ben.kirzhner@gmail.com
 [core]
     editor = vim
 	excludesfile = /Users/benjamin/.gitignore_global
