@@ -3,7 +3,7 @@ require 'fileutils'
 require 'pathname'
 
 HOME = Pathname.new(ENV['HOME'])
-SKIP_FILES = %w[.git .gitignore .gitmodules install.rb].map{ |s| Pathname.new(s) }
+SKIP_FILES = %w[.git .gitignore .gitmodules install.rb].map { |s| Pathname.new(s) }
 
 def run
   safe_dir_path = HOME + DateTime.now.strftime('old-dotfiles-%Y%m%d-%H%M%S')
@@ -21,7 +21,7 @@ rescue => exn
 end
 
 def backup_to_safe_dir(file, safe_dir_path)
-  safe_dir_path.mkdir unless safe_dir_path.exist?
+  safe_dir_path.mkpath
   backup_path = safe_dir_path + file.basename
   FileUtils.mv(file, backup_path)
   puts "Backed up #{file} to #{backup_path}"
