@@ -14,11 +14,12 @@ autoload -U zgitinit && zgitinit
 escaped_red="%{${fg[red]}%}"
 escaped_yellow="%{${fg[yellow]}%}"
 escaped_green="%{${fg[green]}%}"
+escaped_white="%{${fg[white]}%}"
 escaped_reset="%{${reset_color}%}"
 
 prompt_bkirz_dir () {
   ruby_script='
-    components = `pwd`.gsub(ENV["HOME"], "~").split("/")
+    components = Dir.pwd.sub(Dir.home, "~").split("/")
     if components.empty?
       print "/"
     else
@@ -50,7 +51,7 @@ prompt_bkirz_git_dots () {
 }
 
 prompt_bkirz_git_branch () {
-  branch_string="$(zgit_branch)"
+  branch_string=`git rev-parse --abbrev-ref HEAD`
 
   if [[ $branch_string == "" ]]; then
     branch_string=`git rev-parse HEAD | head -c 7`
@@ -73,7 +74,7 @@ prompt_bkirz_git_status () {
 }
 
 prompt_bkirz_setup () {
-  user_color="%(!.${escaped_red}.)"
+  user_color="%(!.${escaped_red}.${escaped_white})"
   prompt_text="${user_color}→ ${escaped_reset}"
 
   PROMPT='$(prompt_bkirz_dir) $(prompt_bkirz_git_status)${prompt_text}'
