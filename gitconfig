@@ -5,12 +5,8 @@
     editor = vim
 	excludesfile = /Users/benjamin/.gitignore_global
 [alias]
-    graph = log --decorate --graph
-    statsu = status
-    stauts = status
-    pish = push
-    psuh = push
-    chekcout = checkout
+    graph = log --decorate --graph --oneline --all
+    pf = push --force-with-lease
 [apply]
     whitespace = strip
 [diff]
@@ -27,3 +23,5 @@
     user = benkirzhner
 [merge]
     tool = vimdiff
+[help]
+	autocorrect = 4
