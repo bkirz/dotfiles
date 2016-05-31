@@ -18,12 +18,16 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-surround'
-" Plugin 'scrooloose/syntastic'
-Plugin 'elixir-lang/vim-elixir'
 Plugin 'cespare/vim-toml'
 Plugin 'wting/rust.vim'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'keith/swift.vim'
+
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'slashmili/alchemist.vim'
+
+" I _really_ want this, but it's so slow.
+" Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
 filetype plugin indent on
@@ -31,6 +35,9 @@ filetype plugin indent on
 
 " Configure system clipboard
 " set clipboard=unnamed
+
+" Disable vim-markdown's folding support
+let g:vim_markdown_folding_disabled=1
 
 " Make backspace work again
 set backspace=indent,eol,start
@@ -215,7 +222,7 @@ map <leader>a :Ack <c-R><cr>
 map <leader>r :set ft=ruby<cr>
 
 " Ctrl-P configuration
-let g:ctrlp_custom_ignore = { 'dir': '\v[\/](\.bundle|bundle|coverage|logs?|_build|deps)$', 'file': '\v\.beam$' }
+let g:ctrlp_custom_ignore = { 'dir': '\v[\/](\.bundle|bundle|coverage|logs?|_build|deps|tmp\/travis)$', 'file': '\v\.beam$' }
 
 set wildignore+=*.swp
 
@@ -226,3 +233,10 @@ set diffopt+=vertical
 if filereadable(glob("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
+
+
+" Configure vagrantfiles as ruby files
+augroup vagrant
+  au!
+  au BufRead,BufNewFile Vagrantfile set filetype=ruby
+augroup END
