@@ -22,7 +22,7 @@ Plugin 'cespare/vim-toml'
 Plugin 'wting/rust.vim'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'keith/swift.vim'
-
+Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'slashmili/alchemist.vim'
 
