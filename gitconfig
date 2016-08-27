@@ -1,27 +1,40 @@
 [user]
-	name = Ben Kirzhner
-	email = ben.kirzhner@gmail.com
+  name = Ben Kirzhner
+  email = ben.kirzhner@gmail.com
 [core]
-    editor = vim
-	excludesfile = /Users/benjamin/.gitignore_global
+  editor = vim
+  excludesfile = /Users/benjamin/.gitignore_global
 [alias]
-    graph = log --decorate --graph --oneline --all
-    pf = push --force-with-lease
+  graph = log --decorate --graph --oneline --all
+  pf = push --force-with-lease
 [apply]
-    whitespace = strip
+  whitespace = strip
 [diff]
-    color = auto
-    rename = copy
-    patience = true
+  color = auto
+  rename = copy
+  patience = true
+  compactionHeuristic = true
 [pager]
-    color = true
+  color = true
 [status]
-    color = auto
+  color = auto
 [push]
-    default = tracking
+  default = tracking
 [github]
-    user = benkirzhner
+  user = benkirzhner
 [merge]
-    tool = vimdiff
+  tool = vimdiff
 [help]
-	autocorrect = 4
+  autocorrect = 1
+[filter "media"]
+  clean = git-media-clean %f
+  smudge = git-media-smudge %f
+[filter "lfs"]
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
