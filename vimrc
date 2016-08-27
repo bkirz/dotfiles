@@ -224,7 +224,9 @@ map <leader>a :Ack <c-R><cr>
 map <leader>r :set ft=ruby<cr>
 
 " Ctrl-P configuration
-let g:ctrlp_custom_ignore = { 'dir': '\v[\/](\.bundle|bundle|coverage|logs?|_build|deps|tmp\/travis)$', 'file': '\v\.beam$' }
+let g:ctrlp_custom_ignore = { 'dir': '\v[\/](\.bundle|bundle|coverage|logs?|_build|deps|tmp\/travis)$', 'file': '\v\.(beam|html)$' }
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
 
 set wildignore+=*.swp
 
