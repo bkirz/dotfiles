@@ -24,7 +24,9 @@ Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'keith/swift.vim'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'elixir-lang/vim-elixir'
-Plugin 'slashmili/alchemist.vim'
+
+" I think this is messing with my indentation
+" Plugin 'slashmili/alchemist.vim'
 
 " I _really_ want this, but it's so slow.
 " Plugin 'Valloric/YouCompleteMe'
