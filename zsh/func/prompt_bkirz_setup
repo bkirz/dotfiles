@@ -15,6 +15,7 @@ escaped_red="%{${fg[red]}%}"
 escaped_yellow="%{${fg[yellow]}%}"
 escaped_green="%{${fg[green]}%}"
 escaped_white="%{${fg[white]}%}"
+escaped_blue="%{${fg[blue]}%}"
 escaped_reset="%{${reset_color}%}"
 
 prompt_bkirz_dir () {
@@ -60,6 +61,20 @@ prompt_bkirz_git_branch () {
   echo $branch_string
 }
 
+prompt_bkirz_bisect_info () {
+  prompt_bkirz_currently_bisecting || return
+  echo " ${escaped_blue}bisecting${escaped_reset}"
+}
+
+prompt_bkirz_currently_bisecting () {
+  bisect_log_output=`git bisect log 2>&1`
+  if [[ ($bisect_log_output != "We are not bisecting.") && ($bisect_log_output != "You need to run this command from the toplevel of the working tree.") ]]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
 prompt_bkirz_stash_info () {
   count=`git stash list | wc -l | tr -d '[:blank:]'`
   if [[ $count -gt 0 ]]; then
@@ -67,17 +82,21 @@ prompt_bkirz_stash_info () {
   fi
 }
 
+prompt_bkirz_exit_code () {
+  echo "%(0?..[${escaped_red}%?${escaped_reset}] )"
+}
+
 prompt_bkirz_git_status () {
   zgit_isgit || return
 
-  echo "($(prompt_bkirz_git_branch)$(prompt_bkirz_git_dots))$(prompt_bkirz_stash_info) "
+  echo "($(prompt_bkirz_git_branch)$(prompt_bkirz_bisect_info)$(prompt_bkirz_git_dots))$(prompt_bkirz_stash_info) "
 }
 
 prompt_bkirz_setup () {
   user_color="%(!.${escaped_red}.${escaped_white})"
   prompt_text="${user_color}→ ${escaped_reset}"
 
-  PROMPT='$(prompt_bkirz_dir) $(prompt_bkirz_git_status)${prompt_text}'
+  PROMPT='$(prompt_bkirz_dir) $(prompt_bkirz_git_status)$(prompt_bkirz_exit_code)${prompt_text}'
   export PROMPT
 }
 
