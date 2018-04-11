@@ -125,6 +125,7 @@ function! RunTests(filename, env_vars)
     let is_mix_project = filereadable("./mix.exs")
     let is_elixir = match(a:filename, '_test.exs$') != -1
     let is_python = match(a:filename, '.py$') != -1
+    let is_lua_spec = match(a:filename, 'spec.lua$') != -1
 
     if !is_python
       :silent !echo;echo;echo;
@@ -145,7 +146,12 @@ function! RunTests(filename, env_vars)
       endif
     elseif is_elixir
       exec ":!time elixir " . a:filename
+    elseif is_lua_spec
+      " Assume we're using the busted framework, since that's what exercism
+      " uses.
+      exec ":!time busted " . a:filename
     else
+      " Assume we're using rspec.
       let rspec_bin = FindRSpecBinary(".")
       exec ":!time NOEXEC=0 " . a:env_vars . rspec_bin . a:filename
     end
