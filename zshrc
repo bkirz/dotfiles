@@ -24,10 +24,6 @@ compinit
 # Ensure homebrew-installed stuff takes precedence over system
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
-# Load chruby and enable auto-switching
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-source /usr/local/opt/chruby/share/chruby/auto.sh
-
 # Load a local override file for machine-specific config
 [[ -s $HOME/.zshrc.local ]] && source $HOME/.zshrc.local
 
@@ -37,3 +33,7 @@ setopt extendedglob
 
 # added by travis gem
 [ -f /Users/benjamin/.travis/travis.sh ] && source /Users/benjamin/.travis/travis.sh
+
+[ -f $HOME/.asdf/asdf.sh ] && source $HOME/.asdf/asdf.sh
+
+[ -f $HOME/.asdf/completions/asdf.bash ] . $HOME/.asdf/completions/asdf.bash
