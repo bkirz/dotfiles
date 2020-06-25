@@ -37,3 +37,5 @@ setopt extendedglob
 [ -f $HOME/.asdf/asdf.sh ] && source $HOME/.asdf/asdf.sh
 
 [ -f $HOME/.asdf/completions/asdf.bash ] && source $HOME/.asdf/completions/asdf.bash
+
+true # don't want to show an error code of 1 for each new prompt
