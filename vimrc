@@ -236,9 +236,6 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 
 set wildignore+=*.swp
 
-" Prefer vertical diffs
-set diffopt+=vertical
-
 " Delegate to a local vimrc
 if filereadable(glob("~/.vimrc.local"))
   source ~/.vimrc.local
